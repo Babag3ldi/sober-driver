@@ -1,16 +1,18 @@
-class RouteModel {
-  final String from;
-  final String to;
-  final int price;
+class Marshut {
+  String aCity = "";
+  String bCity = "";
+  int baha = 0;
+  Marshut({required this.aCity, required this.bCity, required this.baha});
 
-  RouteModel(this.from, this.to, this.price);
+  bool ispresent(String A, B) {
+    if (A == aCity && B == bCity) return true;
+    if (B == aCity && A == bCity) return true;
+    return false;
+  }
 
-  bool matches(String a, String b) =>
-      (a == from && b == to) || (a == to && b == from);
+  num bahasy(String A, B) {
+    if (A == aCity && B == bCity) return baha;
+    if (B == aCity && A == bCity) return baha;
+    return 0;
+  }
 }
-
-List<RouteModel> yollar = [
-  RouteModel("Ashgabat", "Ashgabat", 40),
-  RouteModel("Ashgabat", "Buzmeyin", 60),
-  RouteModel("Ashgabat", "Gökdepä", 100),
-];

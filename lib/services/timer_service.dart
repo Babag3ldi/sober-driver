@@ -1,27 +1,27 @@
 import 'dart:async';
 
 class TimerService {
-  Duration current = Duration.zero;
   Timer? _timer;
+  Duration _elapsed = Duration.zero;
 
-  Function(Duration)? onTick;
+  final void Function(Duration) onTick;
+
+  TimerService({required this.onTick});
 
   void start() {
-    stop();
-
-    _timer = Timer.periodic(const Duration(seconds: 1), (t) {
-      current += const Duration(seconds: 1);
-      if (onTick != null) onTick!(current);
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      _elapsed += const Duration(seconds: 1);
+      onTick(_elapsed);
     });
-  }
-
-  void reset() {
-    current = Duration.zero;
   }
 
   void stop() {
     _timer?.cancel();
+    _timer = null;
+    _elapsed = Duration.zero;
   }
 
-  bool get isRunning => _timer != null;
+  void dispose() {
+    _timer?.cancel();
+  }
 }

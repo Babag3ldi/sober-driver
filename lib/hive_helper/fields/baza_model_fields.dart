@@ -11,4 +11,6 @@ class BazaModelFields {
 	static const int yarygije = 9;
 	static const int dolanWagt = 10;
 	static const int isFinished = 11;
+  static const int bashlanSene = 12;
+  static const int gutaranSene = 13;
 }
